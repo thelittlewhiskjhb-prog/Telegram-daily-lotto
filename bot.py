@@ -87,7 +87,7 @@ def number_keyboard():
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.effective_message.reply_text(
         "🎰 *TELEGRAM DAILY LOTTO*\n\n"
-        "🎟️ Entry: *R60 per ticket*\n"
+        "🎟️ Entry: *R30 per ticket*\n"
         "🔢 Choose a number from *1–120*\n"
         "🕔 Payment & number selection closes at *5:00 PM*\n"
         "🎲 Daily draw: *8:00 PM*\n\n"
@@ -147,7 +147,7 @@ async def on_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
             return
         await q.edit_message_text(
-            "🎯 *CHOOSE YOUR LUCKY NUMBER*\n\nPick any number from *1 to 120*.\n\nEach ticket costs *R60*.",
+            "🎯 *CHOOSE YOUR LUCKY NUMBER*\n\nPick any number from *1 to 120*.\n\nEach ticket costs *R30*.",
             parse_mode="Markdown", reply_markup=number_keyboard()
         )
         return
@@ -235,7 +235,7 @@ async def on_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await q.edit_message_text(
             "📖 *HOW IT WORKS*\n\n"
             "1️⃣ Choose a number from 1–120.\n"
-            "2️⃣ Each ticket is R60.\n"
+            "2️⃣ Each ticket is R30.\n"
             "3️⃣ Payment and number selection must be completed by 5:00 PM.\n"
             "4️⃣ At 8:00 PM the bot randomly selects one winning number.\n"
             "5️⃣ Winners are identified from eligible paid tickets.\n"
