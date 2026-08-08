@@ -3,7 +3,7 @@
 Core bot prototype for @DailyLottoSA_Bot.
 
 Features:
-- R60 ticket price
+- R30 ticket price
 - Numbers 1-120
 - Selection deadline 17:00 Africa/Johannesburg
 - Automatic daily draw at 20:00 Africa/Johannesburg
