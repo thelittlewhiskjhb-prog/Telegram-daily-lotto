@@ -364,9 +364,16 @@ async def post_init(app):
 def main():
     if not TOKEN:
         raise RuntimeError("BOT_TOKEN environment variable is missing")
+
     init_db()
 
-    app = ApplicationBuilder().token(TOKEN).post_init(post_init).build()
+    app = (
+        ApplicationBuilder()
+        .token(TOKEN)
+        .post_init(post_init)
+        .build()
+    )
+
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("status", status_cmd))
     app.add_handler(CommandHandler("history", history_cmd))
@@ -375,8 +382,24 @@ def main():
     app.add_handler(CommandHandler("setchat", setchat))
     app.add_handler(CallbackQueryHandler(on_button))
 
-    log.info("Starting Telegram Daily Lotto bot")
-    app.run_polling(allowed_updates=Update.ALL_TYPES)
+    port = int(os.environ.get("PORT", "10000"))
+    public_url = os.environ.get("PUBLIC_URL")
+
+    if not public_url:
+        raise RuntimeError("PUBLIC_URL environment variable is missing")
+
+    webhook_path = "telegram-webhook"
+
+    log.info("Starting Telegram webhook bot")
+
+    app.run_webhook(
+        listen="0.0.0.0",
+        port=port,
+        url_path=webhook_path,
+        webhook_url=f"{public_url.rstrip('/')}/{webhook_path}",
+        drop_pending_updates=True,
+    )
+
 
 
 if __name__ == "__main__":
