@@ -13,7 +13,7 @@ ADMIN_ID = int(os.environ.get("ADMIN_ID", "0"))
 ANNOUNCEMENT_CHAT_ID = int(os.environ.get("ANNOUNCEMENT_CHAT_ID", "0"))
 
 TZ = ZoneInfo("Africa/Johannesburg")
-ENTRY_PRICE = 60
+ENTRY_PRICE = 30
 MIN_NUMBER = 1
 MAX_NUMBER = 120
 DB_PATH = os.environ.get("DB_PATH", "lotto.db")
